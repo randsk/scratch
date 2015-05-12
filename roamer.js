@@ -16,9 +16,10 @@
 
     var device = null;
     ext._deviceConnected = function(dev) {
-        if(device) return;
+        alert("Connected");
+        //if(device) return;
 
-        device = dev;
+        //device = dev;
         // device.open();
 
         // poller = setInterval(function() {
