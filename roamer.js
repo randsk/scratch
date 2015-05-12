@@ -11,8 +11,13 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
+         ['', 'test', 'test', '2'],
         ]
     };
+
+    ext.test = function() {
+        Console.log("TEST!")
+    }
 
     var device = null;
     ext._deviceConnected = function(dev) {
