@@ -16,7 +16,7 @@
 
     var device = null;
     ext._deviceConnected = function(dev) {
-        alert("Connected");
+        Console.log("Connected");
         //if(device) return;
 
         //device = dev;
