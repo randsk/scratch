@@ -8,16 +8,18 @@
         return {status: 2, msg: 'Ready'};
     };
 
+
+    ext.test_func = function() {
+        Console.log("TEST!")
+    };
+
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-         ['', 'test', 'test'],
+         ['', 'test', 'test_func']
         ]
     };
 
-    ext.test = function() {
-        Console.log("TEST!")
-    }
 
     var device = null;
     ext._deviceConnected = function(dev) {
