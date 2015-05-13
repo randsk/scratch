@@ -2,6 +2,8 @@
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
 
+    var device = "NOT CONNECTED";
+
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
     ext._getStatus = function() {
@@ -14,7 +16,7 @@
     };
 
     ext.test_func2 = function() {
-        alert("TEST!");
+        alert("TEST! " + device);
     };
 
     // Block and block menu descriptions
@@ -26,10 +28,12 @@
     };
 
 
-    var device = null;
+
     ext._deviceConnected = function(dev) {
         alert("Connected");
         //if(device) return;
+
+        device = "CONNECTED";
 
         //device = dev;
         // device.open();
@@ -42,6 +46,8 @@
 
     ext._deviceRemoved = function(dev) {
         alert("Removed");
+
+        device = "NOT CONNECTED";
     };
 
     var hid_info = {type: 'hid', vendor: 0x1040, product: 0x8006};
