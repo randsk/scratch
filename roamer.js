@@ -13,10 +13,15 @@
         Console.log("TEST!")
     };
 
+    ext.test_func2 = function() {
+        alert("TEST!");
+    };
+
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-         ['', 'test', 'test_func']
+         ['', 'test', 'test_func'],
+         ['', 'test2', 'test_func2']
         ]
     };
 
