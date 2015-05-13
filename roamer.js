@@ -28,7 +28,7 @@
 
     var device = null;
     ext._deviceConnected = function(dev) {
-        Console.log("Connected");
+        alert("Connected");
         //if(device) return;
 
         //device = dev;
@@ -37,6 +37,11 @@
         // poller = setInterval(function() {
         //     rawData = device.read();
         // }, 20);
+    };
+
+
+    ext._deviceRemoved = function(dev) {
+        alert("Removed");
     };
 
     var hid_info = {type: 'hid', vendor: 0x1040, product: 0x8006};
