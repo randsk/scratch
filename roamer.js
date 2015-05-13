@@ -17,6 +17,11 @@
 
     ext.test_func2 = function() {
         alert("TEST! [" + device + "]");
+
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", "http://localhost:7666/forward/0/10", false );
+        xmlHttp.send( null );
+        return xmlHttp.responseText;
     };
 
     // Block and block menu descriptions
