@@ -16,7 +16,7 @@
     };
 
     ext.test_func2 = function() {
-        alert("TEST! " + device);
+        alert("TEST! [" + device + "]");
     };
 
     // Block and block menu descriptions
