@@ -43,6 +43,7 @@
         alert("TEST! [" + device + "]");
 
         if(!socket) {
+            alert("CONNECTING")
             socket = io.connect('http://localhost:7666');
         }
 
