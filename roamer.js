@@ -44,7 +44,7 @@
 
         if(!socket) {
             alert("CONNECTING")
-            socket = io.connect("localhost:7666");
+            socket = io.connect("tcp://localhost:7666");
         }
 
         socket.emit('test', {'hello': 'world'});
@@ -55,7 +55,7 @@
 
         socket.on('test', function(data) {
             alert(data);
-        };
+        });
 
         return "";
     };
