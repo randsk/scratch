@@ -44,7 +44,7 @@
 
         if(!socket) {
             alert("CONNECTING")
-            socket = io.connect('http://localhost:7666');
+            socket = io.connect("localhost:7666");
         }
 
         socket.emit('test', {'hello': 'world'});
@@ -52,8 +52,15 @@
         // var xmlHttp = new XMLHttpRequest();
         // xmlHttp.open( "GET", "http://localhost:7666/forward/0/10", false );
         //xmlHttp.send( null );
+
+        socket.on('test', function(data) {
+            alert(data);
+        };
+
         return "";
     };
+
+
 
     // Block and block menu descriptions
     var descriptor = {
