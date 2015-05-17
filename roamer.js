@@ -24,7 +24,7 @@
 
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
-            console.log("Command result: " + xmlHttp.readyState + "/" + xmlHttp.status );
+            //console.log("Command result: " + xmlHttp.readyState + "/" + xmlHttp.status );
             alert("Command result: " + xmlHttp.readyState + "/" + xmlHttp.status);
         };
 
