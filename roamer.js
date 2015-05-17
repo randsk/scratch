@@ -1,32 +1,14 @@
 (function(ext) {
 
-    function myRequire( url ) {
-        var ajax = new XMLHttpRequest();
-        ajax.open( 'GET', url, false ); // <-- the 'false' makes it synchronous
-        ajax.onreadystatechange = function () {
-            var script = ajax.response || ajax.responseText;
-            if (ajax.readyState === 4) {
-                switch( ajax.status) {
-                    case 200:
-                        eval.apply( window, [script] );
-                        console.log("script loaded: ", url);
-                        break;
-                    default:
-                        console.log("ERROR: script not loaded: ", url);
-                }
-            }
-        };
-        ajax.send(null);
+    var commandCount = 0;
+    var base = "http://localhost:7666";
+    var urlFor = function(u, a) {
+        commandCount = commandCount + 1;
+        return base + "/" + u + "/" + commandCount + "/" + a;
     };
-
-    myRequire("https://cdn.socket.io/socket.io-1.3.4.js");
-
-    var socket = null;
 
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
-
-    var device = "NOT CONNECTED";
 
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
@@ -34,30 +16,22 @@
         return {status: 2, msg: 'Ready'};
     };
 
-
     ext.test_func = function() {
         Console.log("TEST!")
     };
 
     ext.test_func2 = function() {
-        alert("TEST! [" + device + "]");
-
-        // if(!socket) {
-        //     alert("CONNECTING")
-        //     socket = io.connect("tcp://localhost:7666");
-        // }
-
-        // socket.emit('test', {'hello': 'world'});
 
         var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", "http://localhost:7666/forward/0/10", false );
-        xmlHttp.send( null );
+        xmlHttp.onreadystatechange = function() {
+            Console.log("Command result: " + xmlHttp.readyState + "/" + xmlHttp.status );
+            alert("Command result: " + xmlHttp.readyState + "/" + xmlHttp.status);
+        };
 
-        // socket.on('test', function(data) {
-        //     alert(data);
-        // });
+        xmlHttp.open("GET", urlFor("forward", 10), true);
+        xmlHttp.send();
 
-        return "";
+        return null;
     };
 
 
@@ -70,29 +44,5 @@
         ]
     };
 
-
-
-    ext._deviceConnected = function(dev) {
-        alert("Connected");
-        //if(device) return;
-
-        device = "CONNECTED";
-
-        //device = dev;
-        // device.open();
-
-        // poller = setInterval(function() {
-        //     rawData = device.read();
-        // }, 20);
-    };
-
-
-    ext._deviceRemoved = function(dev) {
-        alert("Removed");
-
-        device = "NOT CONNECTED";
-    };
-
-    var hid_info = {type: 'hid', vendor: 0x1040, product: 0x8006};
-    ScratchExtensions.register('Roamer', descriptor, ext, hid_info);
+    ScratchExtensions.register('Roamer', descriptor, ext);
 })({});
