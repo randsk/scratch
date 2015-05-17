@@ -42,20 +42,20 @@
     ext.test_func2 = function() {
         alert("TEST! [" + device + "]");
 
-        if(!socket) {
-            alert("CONNECTING")
-            socket = io.connect("tcp://localhost:7666");
-        }
+        // if(!socket) {
+        //     alert("CONNECTING")
+        //     socket = io.connect("tcp://localhost:7666");
+        // }
 
-        socket.emit('test', {'hello': 'world'});
+        // socket.emit('test', {'hello': 'world'});
 
-        // var xmlHttp = new XMLHttpRequest();
-        // xmlHttp.open( "GET", "http://localhost:7666/forward/0/10", false );
-        //xmlHttp.send( null );
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", "http://localhost:7666/forward/0/10", false );
+        xmlHttp.send( null );
 
-        socket.on('test', function(data) {
-            alert(data);
-        });
+        // socket.on('test', function(data) {
+        //     alert(data);
+        // });
 
         return "";
     };
