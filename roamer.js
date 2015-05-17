@@ -17,14 +17,14 @@
     };
 
     ext.test_func = function() {
-        Console.log("TEST!")
+        console.log("TEST!")
     };
 
     ext.test_func2 = function() {
 
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
-            Console.log("Command result: " + xmlHttp.readyState + "/" + xmlHttp.status );
+            console.log("Command result: " + xmlHttp.readyState + "/" + xmlHttp.status );
             alert("Command result: " + xmlHttp.readyState + "/" + xmlHttp.status);
         };
 
